@@ -1,0 +1,28 @@
+server:
+      port: 8099  #配置端口
+      address : localhost
+      session-timeout: 30
+      tomcat.max-threads: 0
+      tomcat.uri-encoding: UTF-8
+
+logging:
+        level: debug
+
+elasticjob:
+            serverlists: localhost:2181
+            namespace: elastic-job-api
+
+spring:
+        datasource:
+                    url: jdbc:mysql://localhost:3306/testdb?characterEncoding=utf-8&verifyServerCertificate=false&useSSL=false&requireSSL=false
+                    driver-class-name: com.mysql.jdbc.Driver
+                    username: root
+                    password:
+                    type: com.zaxxer.hikari.HikariDataSource
+
+#  自动创建更新验证数据库结构
+        jpa:
+            hibernate:
+                      ddl-auto: update
+            show-sql: true
+            database: mysql

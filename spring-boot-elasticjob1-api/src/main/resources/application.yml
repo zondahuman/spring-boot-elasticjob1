@@ -1,21 +1,6 @@
-logging:
-        level: debug
-
-elasticjob:
-            serverlists: localhost:2181
-            namespace: boot-job
-
+#spring.profiles.active: 配置文件名（比如这里是 prod或者dev）
 spring:
-        datasource:
-                    url: jdbc:mysql://localhost:3306/testdb?characterEncoding=utf-8&verifyServerCertificate=false&useSSL=false&requireSSL=false
-                    driver-class-name: com.mysql.jdbc.Driver
-                    username: root
-                    password:
-                    type: com.zaxxer.hikari.HikariDataSource
-
-#  自动创建更新验证数据库结构
-        jpa:
-            hibernate:
-                      ddl-auto: update
-            show-sql: true
-            database: mysql
+        profiles:
+#                  active: dev
+#                  active: beta
+                  active: local

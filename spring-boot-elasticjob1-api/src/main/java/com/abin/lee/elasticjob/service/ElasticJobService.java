@@ -44,7 +44,7 @@ public class ElasticJobService {
             } else {
                 cron = CronUtils.getCron(new Date(jobTask.getSendTime()));
             }
-            jobHandler.addJob(jobName, cron, 2, String.valueOf(jobTask.getId()));
+            jobHandler.addJob(jobName, cron, 1, String.valueOf(jobTask.getId()));
         });
     }
 }

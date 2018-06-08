@@ -9,12 +9,12 @@ logging:
         level: debug
 
 elasticjob:
-            serverlists: localhost:2181
+            serverlists: 192.168.1.2:2181
             namespace: ejob-api
 
 spring:
         datasource:
-                    url: jdbc:mysql://localhost:3306/testdb?characterEncoding=utf-8&verifyServerCertificate=false&useSSL=false&requireSSL=false
+                    url: jdbc:mysql://192.168.1.2:3306/testdb?characterEncoding=utf-8&verifyServerCertificate=false&useSSL=false&requireSSL=false
                     driver-class-name: com.mysql.jdbc.Driver
                     username: root
                     password:

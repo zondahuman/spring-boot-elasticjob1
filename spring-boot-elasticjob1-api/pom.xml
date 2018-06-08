@@ -12,4 +12,21 @@
     <artifactId>spring-boot-elasticjob1-api</artifactId>
 
 
+
+    <dependencies>
+
+        <dependency>
+            <artifactId>spring-boot-elasticjob1-common</artifactId>
+            <groupId>com.abin.lee</groupId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+
+
+
+    </dependencies>
+
+
+
+
+
 </project>

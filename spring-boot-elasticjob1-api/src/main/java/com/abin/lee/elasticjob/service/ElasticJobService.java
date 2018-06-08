@@ -31,7 +31,7 @@ public class ElasticJobService {
         List<JobTask> jobTasks = taskRepository.findAll(query);
         jobTasks.forEach(jobTask -> {
             Long current = System.currentTimeMillis();
-            String jobName = "job" + jobTask.getSendTime();
+            String jobName = "job" + jobTask.getContent();
             String cron;
             //说明消费未发送，但是已经过了消息的发送时间，调整时间继续执行任务
             if (jobTask.getSendTime() < current) {

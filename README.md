@@ -298,5 +298,6 @@ job1sharding1要执行数据库order1里面的order任务，实际就是数据�
 
 1、假设数据库order表有100万数据，比如我没有分库分表的时候，只是执行order任务的话，我们可以判断，job1sharding0执行数据库里面的0---50万的数据，另一个分片
 job1sharding1执行order里面的50---100万的数据
-2、假设数据库order表有100万数据，适用于分库分表任务，比如当前分了两个库orderdb0和orderdb1，job1sharding0执行数据库orderdb0里面的数据，job1sharding1执行order里面的数据
+2、假设数据库order表有100万数据，适用于分库分表任务，比如当前分了两个库orderdb0和orderdb1，job1sharding0执行数据库orderdb0里面的数据，job1sharding1执行
+order里面的数据
 

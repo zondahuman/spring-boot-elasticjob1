@@ -13,7 +13,7 @@ public class MyElasticJob implements SimpleJob {
     @Override
     public void execute(ShardingContext shardingContext) {
         //打印出任务相关信息，JobParameter用于传递任务的ID
-        log.info("任务名：{}, 片数：{}, id={}", shardingContext.getJobName(), shardingContext.getShardingTotalCount(),
-                shardingContext.getJobParameter());
+        log.info("任务名：{}, 片数：{}, id={}  具体分片={}", shardingContext.getJobName(), shardingContext.getShardingTotalCount(),
+                shardingContext.getJobParameter(), shardingContext.getShardingItem());
     }
 }

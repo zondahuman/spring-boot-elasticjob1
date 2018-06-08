@@ -5,8 +5,6 @@ import com.abin.lee.elasticjob.dao.TaskRepository;
 import com.abin.lee.elasticjob.entity.JobTask;
 import com.abin.lee.elasticjob.job.ElasticJobHandler;
 import com.abin.lee.elasticjob.util.CronUtils;
-import org.apache.commons.lang3.time.DateFormatUtils;
-import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +14,6 @@ import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.
- *
  **/
 @Service
 public class ElasticJobService {
@@ -32,7 +29,7 @@ public class ElasticJobService {
         Specification query = (Specification<JobTask>) (root, criteriaQuery, criteriaBuilder) -> criteriaBuilder
                 .and(criteriaBuilder.notEqual(root.get("status"), 0));
         List<JobTask> jobTasks = taskRepository.findAll(query);
-        System.out.println("--------------------------------------------------------------------="+ DateUtil.getYMDHMSTime());
+        System.out.println("--------------------------------------------------------------------=" + DateUtil.getYMDHMSTime());
         jobTasks.forEach(jobTask -> {
             Long current = System.currentTimeMillis();
             String jobName = "job" + jobTask.getContent();

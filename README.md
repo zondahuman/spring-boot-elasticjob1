@@ -279,3 +279,24 @@ public class ElasticJobApplication implements CommandLineRunner {
 至此，整个流程就已经走完了，整个demo中主要用到了Elastic-job和spring-data-jpa相关的技术，作为demo，肯定会有一些缺陷，没考虑到的地方，可以根据自己的业务场景进行改进。
 
 最后，附上github源码，欢迎star，一起交流。上面涉及到的数据库，请自行创建，表会自动生成。[源码地址](https://github.com/LuoLiangDSGA/SpringBoot-Learning/tree/master/boot-elasticjob)
+
+
+
+
+
+Elastic-Job执行原理:
+1、如果只有一个分片的情况下，就是和原生的quartz一样的，就是所有的任务都在一台机器上面执行
+2、如果有两个分片的情况下，然后5个job在两台机器上面执行：
+
+机器：machine1，machine2
+job：job1，job2，job3，job4，job5
+分片：sharding[0, 1]，分别为job1sharding0，job1sharding1，
+应用场景：数据分片
+比如job1执行的时候就是job1的两个分片job1sharding0，job1sharding1，分别在会在machine1和machine2上面执行，就是把两个分片分到了两台不同的机器上面了，代码里面
+可以获取到分片的名称：job1sharding0，job1sharding1，我们这个时候可以定义自己的逻辑，比如我的分片job1sharding0要执行order1数据库里面的order任务，另一个分片
+job1sharding1要执行数据库order1里面的order任务，实际就是数据分片
+
+1、假设数据库order表有100万数据，比如我没有分库分表的时候，只是执行order任务的话，我们可以判断，job1sharding0执行数据库里面的0---50万的数据，另一个分片
+job1sharding1执行order里面的50---100万的数据
+2、假设数据库order表有100万数据，适用于分库分表任务，比如当前分了两个库orderdb0和orderdb1，job1sharding0执行数据库orderdb0里面的数据，job1sharding1执行order里面的数据
+

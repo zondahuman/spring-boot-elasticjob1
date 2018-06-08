@@ -27,7 +27,7 @@ public class ElasticJobService {
      */
     public void scanAddJob() {
         Specification query = (Specification<JobTask>) (root, criteriaQuery, criteriaBuilder) -> criteriaBuilder
-                .and(criteriaBuilder.equal(root.get("status"), 0));
+                .and(criteriaBuilder.notEqual(root.get("status"), 0));
         List<JobTask> jobTasks = taskRepository.findAll(query);
         jobTasks.forEach(jobTask -> {
             Long current = System.currentTimeMillis();

@@ -10,7 +10,7 @@ logging:
 
 elasticjob:
             serverlists: localhost:2181
-            namespace: boot-job
+            namespace: ejob-api
 
 spring:
         datasource:
